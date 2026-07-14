@@ -92,6 +92,52 @@ export function createContentArea({ onToggleBookmark, onNavigate }) {
       `;
     });
 
+    // Build Practice Q&A HTML
+    let practiceHtml = "";
+    if (activeTopic.practiceQAs && activeTopic.practiceQAs.length > 0) {
+      practiceHtml += `
+        <div class="border-t border-slate-200 dark:border-slate-800 pt-6 mt-10 space-y-4">
+          <h4 class="text-sm font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-1">Practice Q&A</h4>
+          <div class="space-y-3.5">
+      `;
+      activeTopic.practiceQAs.forEach((qa) => {
+        practiceHtml += `
+          <details class="group p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/20 [&_summary::-webkit-details-marker]:hidden transition-all duration-300">
+            <summary class="flex items-center justify-between cursor-pointer focus:outline-none list-none select-none">
+              <h5 class="text-base font-bold text-slate-800 dark:text-slate-200 pr-4">
+                <span class="text-brand-blue dark:text-brand-yellow font-extrabold mr-2">Q:</span>${qa.question}
+              </h5>
+              <span class="text-slate-450 dark:text-slate-500 group-open:rotate-180 transition-transform duration-300 flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </summary>
+            <div class="mt-3.5 pt-3.5 border-t border-slate-200 dark:border-slate-800/80 space-y-3 animate-fade-in">
+              <p class="text-base text-slate-600 dark:text-slate-400 leading-relaxed">
+                <strong class="text-slate-700 dark:text-slate-300">A:</strong> 
+                ${qa.answer}
+              </p>
+              ${qa.example ? `
+                <div class="mt-3 rounded-lg border border-slate-200 dark:border-slate-800/80 overflow-hidden bg-slate-100/50 dark:bg-slate-900 shadow-sm relative group/code-qa">
+                  <div class="flex items-center justify-between px-3 py-1.5 border-b border-slate-200 dark:border-slate-850 bg-slate-200/50 dark:bg-slate-950">
+                    <span class="text-[10px] font-mono text-slate-500 dark:text-slate-400 font-medium">Practice Code Example</span>
+                    <button class="copy-code-btn flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] font-medium text-slate-500 hover:text-slate-800 hover:bg-slate-200/65 dark:text-slate-400 dark:hover:text-white dark:hover:bg-slate-850 focus:outline-none transition-all" data-code="${encodeURIComponent(qa.example.trim())}">
+                      <span>Copy</span>
+                    </button>
+                  </div>
+                  <div class="p-3 overflow-x-auto">
+                    <pre class="language-javascript"><code class="language-javascript">${escapeHtml(qa.example.trim())}</code></pre>
+                  </div>
+                </div>
+              ` : ""}
+            </div>
+          </details>
+        `;
+      });
+      practiceHtml += `</div></div>`;
+    }
+
     // Build interview Q&A HTML
     let qaHtml = "";
     if (activeTopic.interviewQAs && activeTopic.interviewQAs.length > 0) {
@@ -188,6 +234,16 @@ export function createContentArea({ onToggleBookmark, onNavigate }) {
             </span>
             <span>&bull;</span>
             <span>${activeTopic.readingTime} read</span>
+            <span>&bull;</span>
+            <button id="share-topic-btn" class="flex items-center justify-center p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 focus:outline-none transition-colors" aria-label="Share Topic" title="Share Topic">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-[1.1rem] w-[1.1rem]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="18" cy="5" r="3"></circle>
+                <circle cx="6" cy="12" r="3"></circle>
+                <circle cx="18" cy="19" r="3"></circle>
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+              </svg>
+            </button>
           </div>
         </div>
 
@@ -206,6 +262,9 @@ export function createContentArea({ onToggleBookmark, onNavigate }) {
         <div class="space-y-10">
           ${sectionsHtml}
         </div>
+
+        <!-- Practice Q&A -->
+        ${practiceHtml}
 
         <!-- Interview Q&A -->
         ${qaHtml}
@@ -298,6 +357,43 @@ export function createContentArea({ onToggleBookmark, onNavigate }) {
     const backToTopBtn = e.target.closest("#back-to-top");
     if (backToTopBtn) {
       window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    // 5. Share topic click
+    const shareBtn = e.target.closest("#share-topic-btn");
+    if (shareBtn) {
+      if (activeTopic) {
+        const shareUrl = window.location.href;
+        const shareTitle = `JavaScript - ${activeTopic.title}`;
+        const shareText = `Check out this topic on JavaScript: ${activeTopic.title} - ${activeTopic.introduction}`;
+
+        if (navigator.share) {
+          navigator.share({
+            title: shareTitle,
+            text: shareText,
+            url: shareUrl
+          })
+          .then(() => Toast.show("Shared successfully!"))
+          .catch((err) => {
+            if (err.name !== "AbortError") {
+              copyToClipboard(shareUrl, (success) => {
+                if (success) {
+                  Toast.show("Link copied to clipboard!");
+                }
+              });
+            }
+          });
+        } else {
+          copyToClipboard(shareUrl, (success) => {
+            if (success) {
+              Toast.show("Link copied to clipboard!");
+            } else {
+              Toast.show("Failed to copy link", "warning");
+            }
+          });
+        }
+      }
     }
   });
 
