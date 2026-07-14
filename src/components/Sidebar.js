@@ -111,7 +111,7 @@ export function createSidebar({ topics, onSelectTopic }) {
 
       html += `
         <div class="space-y-1">
-          <div class="px-3 mb-1.5 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-blue">
+          <div class="px-3 mb-1.5 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-400">
             ${icons[catName] || ""}
             <span>${catName}</span>
           </div>
