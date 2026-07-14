@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Documentation & Learning Platform</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="A premium interactive JavaScript documentation and learning platform. Master variables, closures, promises, OOP, performance, and best practices with copyable code snippets, responsive UI, and persistent dark mode." />
+    <meta name="keywords" content="JavaScript, Learn JS, JS Documentation, Frontend Development, ES6, Promises, Closures, Web APIs, OOP" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="JavaScript Documentation & Learning Platform" />
+    <meta property="og:description" content="Master JavaScript from basics to advanced. Includes 27 comprehensive topics, instant search, syntax highlighting, and theme persistence." />
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="JavaScript Documentation & Learning Platform" />
+    <meta name="twitter:description" content="Master JavaScript from basics to advanced. Includes 27 comprehensive topics, instant search, syntax highlighting, and theme persistence." />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Fallback theme script to avoid flash of light mode -->
+    <script>
+      (function () {
+        const theme = localStorage.getItem('js_docs_theme') || 'system';
+        if (
+          theme === 'dark' ||
+          (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script>
+  </head>
+  <body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans transition-colors duration-300 antialiased selection:bg-brand-yellow selection:text-slate-900">
+    <div id="app" class="min-h-screen flex flex-col">
+      <!-- Mounted by main.js -->
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

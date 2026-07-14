@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Scrollbar customization */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-200 dark:bg-slate-800 rounded-full hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors;
+  }
+
+  body {
+    @apply text-slate-800 dark:text-slate-200 bg-slate-50 dark:bg-slate-950 font-sans;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Custom glassmorphism and card stylings */
+.glass {
+  @apply bg-white/70 dark:bg-slate-900/70 backdrop-blur-md border border-slate-200/50 dark:border-slate-800/50;
+}
+
+/* Dynamic Reading Progress Bar */
+#reading-progress {
+  transition: width 0.1s ease-out;
+}
+
+/* Code Highlights Theme custom overrides to match Light/Dark UI */
+pre[class*="language-"] {
+  background: transparent !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important; /* Prevent nested scrollbars */
+}
+code[class*="language-"] {
+  font-family: 'Fira Code', monospace !important;
+  font-size: 0.9rem !important;
+  line-height: 1.5 !important;
+  text-shadow: none !important;
+  @apply text-slate-700 dark:text-slate-300;
+}
+
+/* Light mode tokens */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  @apply text-slate-400 italic;
+}
+.token.punctuation {
+  @apply text-slate-500;
+}
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  @apply text-amber-600 dark:text-amber-400;
+}
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  @apply text-emerald-600 dark:text-emerald-400;
+}
+.token.operator,
+.token.entity,
+.token.url {
+  @apply text-pink-600 dark:text-pink-400;
+}
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  @apply text-indigo-600 dark:text-indigo-400 font-semibold;
+}
+.token.function,
+.token.class-name {
+  @apply text-sky-600 dark:text-sky-400;
+}
+.token.regex,
+.token.important,
+.token.variable {
+  @apply text-orange-600 dark:text-orange-400;
+}
+
+/* Page transitions */
+.fade-out-content {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.25s ease-in, transform 0.25s ease-in;
+}
+
+.fade-in-content {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+/* Custom subtle hover animation */
+.hover-lift {
+  @apply transition-transform duration-300 ease-out hover:-translate-y-0.5;
+}
+
+/* Hide scrollbar for sidebar scrollable container to prevent double scrollbars */
+#sidebar-scrollable::-webkit-scrollbar {
+  display: none !important;
+}
+#sidebar-scrollable {
+  -ms-overflow-style: none !important;  /* IE and Edge */
+  scrollbar-width: none !important;  /* Firefox */
+}
