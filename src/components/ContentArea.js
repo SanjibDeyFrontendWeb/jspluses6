@@ -51,13 +51,23 @@ export function createContentArea({ onToggleBookmark, onNavigate }) {
       `;
     }
 
-    const bookmarkStarSvg = isBookmarked
-      ? `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>`
-      : `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-400 dark:text-slate-500 group-hover:text-amber-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.907c.961 0 1.36 1.24.588 1.81l-3.97 2.883a1 1 0 00-.364 1.118l1.52 4.674c.3.922-.755 1.688-1.538 1.118l-3.971-2.883a1 1 0 00-1.178 0l-3.97 2.883c-.783.57-1.838-.197-1.539-1.118l1.52-4.674a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h4.906a1 1 0 00.951-.69l1.519-4.674z" /></svg>`;
+    const heartSvg = isBookmarked
+      ? `<svg xmlns="http://www.w3.org/2000/svg" class="h-[1.2rem] w-[1.2rem] text-red-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" /></svg>`
+      : `<svg xmlns="http://www.w3.org/2000/svg" class="h-[1.2rem] w-[1.2rem] text-slate-400 hover:text-red-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`;
 
     // Build section content HTML
     let sectionsHtml = "";
     activeTopic.sections.forEach((section, idx) => {
+      // Render image if defined in topic section data
+      let imageHtml = "";
+      if (section.image) {
+        imageHtml = `
+          <div class="mt-4 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-850 bg-slate-50 dark:bg-slate-900/30 p-2 shadow-sm mx-auto">
+            <img src="${section.image}" alt="${section.title} illustration" class="w-full h-auto rounded-lg object-contain" loading="lazy" />
+          </div>
+        `;
+      }
+
       let codeBlockHtml = "";
       if (section.code) {
         codeBlockHtml = `
@@ -80,13 +90,28 @@ export function createContentArea({ onToggleBookmark, onNavigate }) {
         `;
       }
 
-      sectionsHtml += `
-        <section class="space-y-3">
+      let titleHtml = "";
+      if (section.title && section.title.trim()) {
+        titleHtml = `
           <h3 class="text-xl font-bold font-display text-slate-800 dark:text-slate-200 flex items-center gap-2">
             <span class="text-brand-accent dark:text-brand-yellow font-mono text-sm">#</span>
             ${section.title}
           </h3>
+        `;
+      }
+
+      let contentHtml = "";
+      if (section.content && section.content.trim()) {
+        contentHtml = `
           <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-base">${section.content}</p>
+        `;
+      }
+
+      sectionsHtml += `
+        <section class="space-y-3">
+          ${titleHtml}
+          ${contentHtml}
+          ${imageHtml}
           ${codeBlockHtml}
         </section>
       `;
@@ -244,18 +269,19 @@ export function createContentArea({ onToggleBookmark, onNavigate }) {
                 <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
               </svg>
             </button>
+            <span>&bull;</span>
+            <button id="bookmark-btn" class="flex items-center justify-center p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none transition-colors" aria-label="Favorite Topic" title="Favorite Topic">
+              ${heartSvg}
+            </button>
           </div>
         </div>
 
         <!-- Topic Title Area -->
         <div class="border-b border-slate-200 dark:border-slate-800 pb-6 flex items-start justify-between gap-4">
-          <div>
+          <div class="w-full">
             <h1 class="text-3xl md:text-4xl font-extrabold font-display text-slate-900 dark:text-white tracking-tight leading-none">${activeTopic.title}</h1>
             <p class="text-base text-slate-500 dark:text-slate-400 mt-3.5 leading-relaxed font-medium">${activeTopic.introduction}</p>
           </div>
-          <button id="bookmark-btn" class="group flex items-center justify-center p-2.5 rounded-xl border border-slate-200 dark:border-slate-850 hover:bg-slate-100 dark:hover:bg-slate-800/60 focus:outline-none transition-all flex-shrink-0" aria-label="Bookmark Topic">
-            ${bookmarkStarSvg}
-          </button>
         </div>
 
         <!-- Topic Sections -->
@@ -374,16 +400,16 @@ export function createContentArea({ onToggleBookmark, onNavigate }) {
             text: shareText,
             url: shareUrl
           })
-          .then(() => Toast.show("Shared successfully!"))
-          .catch((err) => {
-            if (err.name !== "AbortError") {
-              copyToClipboard(shareUrl, (success) => {
-                if (success) {
-                  Toast.show("Link copied to clipboard!");
-                }
-              });
-            }
-          });
+            .then(() => Toast.show("Shared successfully!"))
+            .catch((err) => {
+              if (err.name !== "AbortError") {
+                copyToClipboard(shareUrl, (success) => {
+                  if (success) {
+                    Toast.show("Link copied to clipboard!");
+                  }
+                });
+              }
+            });
         } else {
           copyToClipboard(shareUrl, (success) => {
             if (success) {

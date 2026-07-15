@@ -5,8 +5,14 @@ export const topics = [
     category: "Basics",
     readingTime: "3 min",
     difficulty: "Beginner",
-    introduction: "JavaScript is a lightweight, interpreted, or JIT-compiled programming language with first-class functions. It is best known as the scripting language for Web pages.",
+    introduction: "JavaScript is a <u>lightweight</u>, interpreted, or JIT-compiled programming language with first-class functions. It is best known as the scripting language for Web pages.",
+    //introduction: "<div class=\"flex flex-col md:flex-row w-full bg-yellow-300 p-2\"><div class=\"w-full md:w-1/3 bg-rose-600 text-white\">01</div><div class=\"w-full md:w-1/3 bg-rose-600 text-white\"><a href='https://www.wander.com/'>02</a></div><div class=\"w-full md:w-1/3 bg-rose-600 text-white\">03</div></div>",
     sections: [
+      // {
+      //   title: "Test Image",
+      //   content: "I test this has work or not",
+      //   image: "https://media.geeksforgeeks.org/wp-content/uploads/20230929165105/JavaScript-Courses-&-Certifications.png" // Just place this file in public/images/
+      // },
       {
         title: "What is JavaScript?",
         content: "JavaScript is a multi-paradigm language: it supports event-driven, functional, and prototype-based programming styles. Initially used only in web browsers, it has now expanded to server-side environments (Node.js) and mobile application frameworks.",
@@ -28,11 +34,11 @@ console.log(value);`
     ],
     practiceQAs: [
       {
-            question: "Write a script that checks if a variable is defined and prints its type.",
-            answer: "You can use the typeof operator. It returns a string representing the type of the unevaluated operand, returning 'undefined' for uninitialized variables.",
-            example: "let x;\nconsole.log(typeof x); // \"undefined\"\nx = 42;\nconsole.log(typeof x); // \"number\""
+        question: "Write a script that checks if a variable is defined and prints its type.",
+        answer: "You can use the typeof operator. It returns a string representing the type of the unevaluated operand, returning 'undefined' for uninitialized variables.",
+        example: "let x;\nconsole.log(typeof x); // \"undefined\"\nx = 42;\nconsole.log(typeof x); // \"number\""
       }
-],
+    ],
     interviewQAs: [
       {
         question: "Is JavaScript an interpreted or compiled language?",
@@ -78,11 +84,11 @@ const z = 30;
     ],
     practiceQAs: [
       {
-            question: "Write a code snippet to demonstrate variable hoisting with var versus let.",
-            answer: "var declarations are hoisted and initialized as undefined. let declarations are hoisted but not initialized (they sit in the Temporal Dead Zone), throwing a ReferenceError if accessed early.",
-            example: "console.log(a); // undefined\nvar a = 1;\n\ntry {\n  console.log(b); // ReferenceError\n  let b = 2;\n} catch (e) {\n  console.log(e.name); // \"ReferenceError\"\n}"
+        question: "Write a code snippet to demonstrate variable hoisting with var versus let.",
+        answer: "var declarations are hoisted and initialized as undefined. let declarations are hoisted but not initialized (they sit in the Temporal Dead Zone), throwing a ReferenceError if accessed early.",
+        example: "console.log(a); // undefined\nvar a = 1;\n\ntry {\n  console.log(b); // ReferenceError\n  let b = 2;\n} catch (e) {\n  console.log(e.name); // \"ReferenceError\"\n}"
       }
-],
+    ],
     interviewQAs: [
       {
         question: "What is the Temporal Dead Zone (TDZ) in let/const?",
@@ -135,11 +141,11 @@ console.log(typeof greet);   // "function"`
     ],
     practiceQAs: [
       {
-            question: "How can you check if a value is a primitive value or an object?",
-            answer: "A value is an object if typeof value === 'object' and it is not null, or if it is a function. Otherwise, it is a primitive (string, number, boolean, symbol, undefined, bigint, or null).",
-            example: "function isPrimitive(val) {\n  return val === null || (typeof val !== 'object' && typeof val !== 'function');\n}\nconsole.log(isPrimitive(42));     // true\nconsole.log(isPrimitive({}));     // false\nconsole.log(isPrimitive(null));   // true"
+        question: "How can you check if a value is a primitive value or an object?",
+        answer: "A value is an object if typeof value === 'object' and it is not null, or if it is a function. Otherwise, it is a primitive (string, number, boolean, symbol, undefined, bigint, or null).",
+        example: "function isPrimitive(val) {\n  return val === null || (typeof val !== 'object' && typeof val !== 'function');\n}\nconsole.log(isPrimitive(42));     // true\nconsole.log(isPrimitive({}));     // false\nconsole.log(isPrimitive(null));   // true"
       }
-],
+    ],
     interviewQAs: [
       {
         question: "Why does typeof null evaluate to 'object'?",
@@ -195,11 +201,11 @@ console.log(actualCount);`
     ],
     practiceQAs: [
       {
-            question: "Implement a function that performs division and returns both the quotient and the remainder.",
-            answer: "You can use the division operator '/' combined with Math.floor() to extract the quotient, and the modulo operator '%' to capture the remainder.",
-            example: "const divide = (a, b) => ({\n  quotient: Math.floor(a / b),\n  remainder: a % b\n});\nconsole.log(divide(10, 3)); // { quotient: 3, remainder: 1 }"
+        question: "Implement a function that performs division and returns both the quotient and the remainder.",
+        answer: "You can use the division operator '/' combined with Math.floor() to extract the quotient, and the modulo operator '%' to capture the remainder.",
+        example: "const divide = (a, b) => ({\n  quotient: Math.floor(a / b),\n  remainder: a % b\n});\nconsole.log(divide(10, 3)); // { quotient: 3, remainder: 1 }"
       }
-],
+    ],
     interviewQAs: [
       {
         question: "What is the difference between standard OR (||) and Nullish Coalescing (??)?",
@@ -237,11 +243,11 @@ console.log(!"");      // true (empty string is falsy)`
     ],
     practiceQAs: [
       {
-            question: "Show how to safely convert a string representation of a binary number (e.g. '1010') to its decimal equivalent.",
-            answer: "Use the global parseInt(string, radix) function and pass 2 as the radix (base) parameter to specify binary parsing.",
-            example: "const binaryStr = \"1010\";\nconst decimalVal = parseInt(binaryStr, 2);\nconsole.log(decimalVal); // 10"
+        question: "Show how to safely convert a string representation of a binary number (e.g. '1010') to its decimal equivalent.",
+        answer: "Use the global parseInt(string, radix) function and pass 2 as the radix (base) parameter to specify binary parsing.",
+        example: "const binaryStr = \"1010\";\nconst decimalVal = parseInt(binaryStr, 2);\nconsole.log(decimalVal); // 10"
       }
-],
+    ],
     interviewQAs: [
       {
         question: "Why does [] + [] evaluate to empty string, while [] + {} evaluates to '[object Object]'?",
@@ -286,11 +292,11 @@ if (hour < 12) {
     ],
     practiceQAs: [
       {
-            question: "Write a switch-case statement that handles string categories ('mammal', 'bird') and defaults to 'unknown'.",
-            answer: "A switch statement evaluates an expression and matches its value against case clauses, executing corresponding blocks of code. Use a default case to catch unhandled values.",
-            example: "const getSpecies = (cat) => {\n  switch(cat) {\n    case \mammal\: return \"Dog\";\n    case \bird\: return \"Eagle\";\n    default: return \"Unknown\";\n  }\n};\nconsole.log(getSpecies(\"mammal\")); // \"Dog\"\nconsole.log(getSpecies(\"fish\"));   // \"Unknown\""
+        question: "Write a switch-case statement that handles string categories ('mammal', 'bird') and defaults to 'unknown'.",
+        answer: "A switch statement evaluates an expression and matches its value against case clauses, executing corresponding blocks of code. Use a default case to catch unhandled values.",
+        example: "const getSpecies = (cat) => {\n  switch(cat) {\n    case \mammal\: return \"Dog\";\n    case \bird\: return \"Eagle\";\n    default: return \"Unknown\";\n  }\n};\nconsole.log(getSpecies(\"mammal\")); // \"Dog\"\nconsole.log(getSpecies(\"fish\"));   // \"Unknown\""
       }
-],
+    ],
     interviewQAs: [
       {
         question: "Does the code in a 'finally' block run if the 'try' or 'catch' block contains a 'return' statement?",
@@ -337,11 +343,11 @@ console.log(result);`
     ],
     practiceQAs: [
       {
-            question: "Create an arrow function that returns the square of a number, and rewrite it as a standard function declaration.",
-            answer: "Arrow functions use shorthand syntax and bind this lexically. Standard function declarations are hoisted to the top of their scope and bind their own this context.",
-            example: "const squareArrow = x => x * x;\n\nfunction squareDec(x) {\n  return x * x;\n}\nconsole.log(squareArrow(5)); // 25\nconsole.log(squareDec(5));   // 25"
+        question: "Create an arrow function that returns the square of a number, and rewrite it as a standard function declaration.",
+        answer: "Arrow functions use shorthand syntax and bind this lexically. Standard function declarations are hoisted to the top of their scope and bind their own this context.",
+        example: "const squareArrow = x => x * x;\n\nfunction squareDec(x) {\n  return x * x;\n}\nconsole.log(squareArrow(5)); // 25\nconsole.log(squareDec(5));   // 25"
       }
-],
+    ],
     interviewQAs: [
       {
         question: "How does the 'this' binding differ between standard functions and arrow functions?",
@@ -394,11 +400,11 @@ function outerFunc() {
     ],
     practiceQAs: [
       {
-            question: "Write a snippet that defines a global, a block, and a function-scoped variable, demonstrating their access boundaries.",
-            answer: "Global variables are accessible anywhere. Block-scoped let/const are restricted to their enclosing brackets {}. Function-scoped var is accessible throughout the declaring function.",
-            example: "const globalVal = \"global\";\nfunction scopeTest() {\n  var funcVal = \"func\";\n  if (true) {\n    let blockVal = \"block\";\n    console.log(globalVal, funcVal, blockVal); // All accessible\n  }\n  // console.log(blockVal); // ReferenceError: blockVal is not defined\n}"
+        question: "Write a snippet that defines a global, a block, and a function-scoped variable, demonstrating their access boundaries.",
+        answer: "Global variables are accessible anywhere. Block-scoped let/const are restricted to their enclosing brackets {}. Function-scoped var is accessible throughout the declaring function.",
+        example: "const globalVal = \"global\";\nfunction scopeTest() {\n  var funcVal = \"func\";\n  if (true) {\n    let blockVal = \"block\";\n    console.log(globalVal, funcVal, blockVal); // All accessible\n  }\n  // console.log(blockVal); // ReferenceError: blockVal is not defined\n}"
       }
-],
+    ],
     interviewQAs: [
       {
         question: "What is lexical scoping?",
@@ -444,11 +450,11 @@ function hoistedFunc() {
     ],
     practiceQAs: [
       {
-            question: "What is the output of calling a function declaration before it is defined, and why?",
-            answer: "Function declarations are fully hoisted (meaning their entire definition is moved to the top of their scope at compile time), allowing them to be called before their definition lines.",
-            example: "sayHello(); // Output: \"Hello!\"\n\nfunction sayHello() {\n  console.log(\"Hello!\");\n}"
+        question: "What is the output of calling a function declaration before it is defined, and why?",
+        answer: "Function declarations are fully hoisted (meaning their entire definition is moved to the top of their scope at compile time), allowing them to be called before their definition lines.",
+        example: "sayHello(); // Output: \"Hello!\"\n\nfunction sayHello() {\n  console.log(\"Hello!\");\n}"
       }
-],
+    ],
     interviewQAs: [
       {
         question: "What happens when a variable and a function share the same name in the same scope, regarding hoisting?",
@@ -503,11 +509,11 @@ console.log(account.balance);       // undefined (Encapsulated)`
     ],
     practiceQAs: [
       {
-            question: "Create a counter function using closures that increments a private state variable.",
-            answer: "A closure allows a returned inner function to maintain lexical reference variables from its parent scope even after the outer function has returned, achieving private variable storage.",
-            example: "function createCounter() {\n  let count = 0;\n  return () => ++count;\n}\nconst counter = createCounter();\nconsole.log(counter()); // 1\nconsole.log(counter()); // 2"
+        question: "Create a counter function using closures that increments a private state variable.",
+        answer: "A closure allows a returned inner function to maintain lexical reference variables from its parent scope even after the outer function has returned, achieving private variable storage.",
+        example: "function createCounter() {\n  let count = 0;\n  return () => ++count;\n}\nconst counter = createCounter();\nconsole.log(counter()); // 1\nconsole.log(counter()); // 2"
       }
-],
+    ],
     interviewQAs: [
       {
         question: "How can closures lead to memory leaks in JavaScript?",
@@ -568,11 +574,11 @@ console.log(rabbit.eats);  // true (inherited)`
     ],
     practiceQAs: [
       {
-            question: "Write a code block to clone an object shallowly and deeply.",
-            answer: "Shallow cloning copies properties at the first level (via spread {...obj}). Deep cloning parses nested levels, which can be done using structuredClone() or JSON serialization.",
-            example: "const original = { a: 1, b: { c: 2 } };\nconst shallow = { ...original };\nconst deep = structuredClone(original);\n\noriginal.b.c = 99;\nconsole.log(shallow.b.c); // 99 (shares reference)\nconsole.log(deep.b.c);    // 2 (deep copy remains intact)"
+        question: "Write a code block to clone an object shallowly and deeply.",
+        answer: "Shallow cloning copies properties at the first level (via spread {...obj}). Deep cloning parses nested levels, which can be done using structuredClone() or JSON serialization.",
+        example: "const original = { a: 1, b: { c: 2 } };\nconst shallow = { ...original };\nconst deep = structuredClone(original);\n\noriginal.b.c = 99;\nconsole.log(shallow.b.c); // 99 (shares reference)\nconsole.log(deep.b.c);    // 2 (deep copy remains intact)"
       }
-],
+    ],
     interviewQAs: [
       {
         question: "What is the difference between Object.keys() and a for...in loop?",
@@ -624,11 +630,11 @@ console.log(letters);       // ["a", "b", "z", "d"]`
     ],
     practiceQAs: [
       {
-            question: "Write a snippet that filters odd numbers from an array and returns the squares of the remaining even numbers.",
-            answer: "You can chain map() and filter() prototype methods. filter() filters items matching a condition, and map() transforms elements in place.",
-            example: "const nums = [1, 2, 3, 4, 5, 6];\nconst evensSquared = nums.filter(n => n % 2 === 0).map(n => n * n);\nconsole.log(evensSquared); // [4, 16, 36]"
+        question: "Write a snippet that filters odd numbers from an array and returns the squares of the remaining even numbers.",
+        answer: "You can chain map() and filter() prototype methods. filter() filters items matching a condition, and map() transforms elements in place.",
+        example: "const nums = [1, 2, 3, 4, 5, 6];\nconst evensSquared = nums.filter(n => n % 2 === 0).map(n => n * n);\nconsole.log(evensSquared); // [4, 16, 36]"
       }
-],
+    ],
     interviewQAs: [
       {
         question: "What is the difference between slice and splice?",
@@ -673,11 +679,11 @@ console.log(str.split(" "));       // ["Frontend", "Development"]`
     ],
     practiceQAs: [
       {
-            question: "Write a function to check if a string is a palindrome (reads the same forwards and backwards) ignoring character case.",
-            answer: "Clean the string by converting it to lowercase, split it into an array of characters, reverse it, join it back, and compare it with the original clean string.",
-            example: "const isPalindrome = (str) => {\n  const clean = str.toLowerCase();\n  return clean === clean.split(\"\").reverse().join(\"\");\n};\nconsole.log(isPalindrome(\"Racecar\")); // true\nconsole.log(isPalindrome(\"hello\"));   // false"
+        question: "Write a function to check if a string is a palindrome (reads the same forwards and backwards) ignoring character case.",
+        answer: "Clean the string by converting it to lowercase, split it into an array of characters, reverse it, join it back, and compare it with the original clean string.",
+        example: "const isPalindrome = (str) => {\n  const clean = str.toLowerCase();\n  return clean === clean.split(\"\").reverse().join(\"\");\n};\nconsole.log(isPalindrome(\"Racecar\")); // true\nconsole.log(isPalindrome(\"hello\"));   // false"
       }
-],
+    ],
     interviewQAs: [
       {
         question: "Are JavaScript strings mutable?",
@@ -729,11 +735,11 @@ for (let val of arr) {
     ],
     practiceQAs: [
       {
-            question: "Write a loop that prints numbers from 1 to 15, but skips numbers divisible by 3 using the continue statement.",
-            answer: "The continue statement terminates execution of the statements in the current iteration of the loop, skipping directly to the next loop evaluation.",
-            example: "for (let i = 1; i <= 15; i++) {\n  if (i % 3 === 0) continue;\n  console.log(i); // Skips 3, 6, 9, 12, 15\n}"
+        question: "Write a loop that prints numbers from 1 to 15, but skips numbers divisible by 3 using the continue statement.",
+        answer: "The continue statement terminates execution of the statements in the current iteration of the loop, skipping directly to the next loop evaluation.",
+        example: "for (let i = 1; i <= 15; i++) {\n  if (i % 3 === 0) continue;\n  console.log(i); // Skips 3, 6, 9, 12, 15\n}"
       }
-],
+    ],
     interviewQAs: [
       {
         question: "When should you use for...in vs for...of?",
@@ -777,11 +783,11 @@ list.appendChild(newItem);`
     ],
     practiceQAs: [
       {
-            question: "Write a script to create a list item <li>, set its text, and append it to a list element.",
-            answer: "Use document.createElement('li') to generate the element, textContent to declare string values, and appendChild() to insert it into a container.",
-            example: "const li = document.createElement(\"li\");\nli.textContent = \"JavaScript practice item\";\n// const ul = document.getElementById(\"my-list\");\n// ul.appendChild(li);"
+        question: "Write a script to create a list item <li>, set its text, and append it to a list element.",
+        answer: "Use document.createElement('li') to generate the element, textContent to declare string values, and appendChild() to insert it into a container.",
+        example: "const li = document.createElement(\"li\");\nli.textContent = \"JavaScript practice item\";\n// const ul = document.getElementById(\"my-list\");\n// ul.appendChild(li);"
       }
-],
+    ],
     interviewQAs: [
       {
         question: "What is a DocumentFragment and why is it used?",
@@ -828,11 +834,11 @@ list.addEventListener("click", (event) => {
     ],
     practiceQAs: [
       {
-            question: "Add an event listener to a button that prevents event bubbling (propagation).",
-            answer: "Invoke e.stopPropagation() inside the event callback listener to stop the click trigger from bubbling up to ancestral wrappers.",
-            example: "const button = document.createElement(\"button\");\nbutton.addEventListener(\"click\", (e) => {\n  e.stopPropagation();\n  console.log(\"Click handled here, won't bubble up!\");\n});"
+        question: "Add an event listener to a button that prevents event bubbling (propagation).",
+        answer: "Invoke e.stopPropagation() inside the event callback listener to stop the click trigger from bubbling up to ancestral wrappers.",
+        example: "const button = document.createElement(\"button\");\nbutton.addEventListener(\"click\", (e) => {\n  e.stopPropagation();\n  console.log(\"Click handled here, won't bubble up!\");\n});"
       }
-],
+    ],
     interviewQAs: [
       {
         question: "What is the difference between event.preventDefault() and event.stopPropagation()?",
@@ -885,11 +891,11 @@ Promise.race([p1, p2]).then(winner => console.log(winner)); // "One"`
     ],
     practiceQAs: [
       {
-            question: "Write a function 'delay(ms)' that returns a Promise resolving after ms milliseconds.",
-            answer: "You can instantiate a Promise that resolves when an asynchronous setTimeout completes after the specified millisecond duration.",
-            example: "const delay = ms => new Promise(resolve => setTimeout(resolve, ms));\n\ndelay(500).then(() => console.log(\"Resolved after 500ms!\"));"
+        question: "Write a function 'delay(ms)' that returns a Promise resolving after ms milliseconds.",
+        answer: "You can instantiate a Promise that resolves when an asynchronous setTimeout completes after the specified millisecond duration.",
+        example: "const delay = ms => new Promise(resolve => setTimeout(resolve, ms));\n\ndelay(500).then(() => console.log(\"Resolved after 500ms!\"));"
       }
-],
+    ],
     interviewQAs: [
       {
         question: "What is the difference between Promise.all() and Promise.allSettled()?",
@@ -955,11 +961,11 @@ step1(val1)
     ],
     practiceQAs: [
       {
-            question: "Implement a function that wraps an asynchronous call with async/await and handles errors using try/catch.",
-            answer: "An async function allows using the await keyword to pause execution until a Promise resolves. Enclose the await statement in try/catch to intercept rejections.",
-            example: "async function fetchUserData() {\n  try {\n    const response = await fetch(\"https://api.github.com/users/octocat\");\n    const user = await response.json();\n    console.log(user.login);\n  } catch (err) {\n    console.error(\"Failed to load user\", err);\n  }\n}"
+        question: "Implement a function that wraps an asynchronous call with async/await and handles errors using try/catch.",
+        answer: "An async function allows using the await keyword to pause execution until a Promise resolves. Enclose the await statement in try/catch to intercept rejections.",
+        example: "async function fetchUserData() {\n  try {\n    const response = await fetch(\"https://api.github.com/users/octocat\");\n    const user = await response.json();\n    console.log(user.login);\n  } catch (err) {\n    console.error(\"Failed to load user\", err);\n  }\n}"
       }
-],
+    ],
     interviewQAs: [
       {
         question: "How do you handle errors in async/await functions?",
@@ -1011,11 +1017,11 @@ async function getPosts() {
     ],
     practiceQAs: [
       {
-            question: "Fetch user details from a public API endpoint and log the payload's username.",
-            answer: "Call fetch() which resolves to a Response. Call .json() to decode the body, then chain a callback resolver to read the JSON fields.",
-            example: "fetch(\"https://api.github.com/users/octocat\")\n  .then(res => res.json())\n  .then(data => console.log(data.login)) // \"octocat\"\n  .catch(err => console.error(\"Fetch failed\", err));"
+        question: "Fetch user details from a public API endpoint and log the payload's username.",
+        answer: "Call fetch() which resolves to a Response. Call .json() to decode the body, then chain a callback resolver to read the JSON fields.",
+        example: "fetch(\"https://api.github.com/users/octocat\")\n  .then(res => res.json())\n  .then(data => console.log(data.login)) // \"octocat\"\n  .catch(err => console.error(\"Fetch failed\", err));"
       }
-],
+    ],
     interviewQAs: [
       {
         question: "Does fetch reject on a 404 or 500 error status?",
@@ -1061,11 +1067,11 @@ button.addEventListener("click", async () => {
     ],
     practiceQAs: [
       {
-            question: "Export a default helper function and a named constant value from an ES module.",
-            answer: "Use 'export default functionName' for the primary function export, and 'export const name = val' for secondary exports.",
-            example: "// file: helpers.js\nexport default function sum(a, b) { return a + b; }\nexport const PI = 3.14159;\n\n// file: main.js\n// import sum, { PI } from './helpers.js';"
+        question: "Export a default helper function and a named constant value from an ES module.",
+        answer: "Use 'export default functionName' for the primary function export, and 'export const name = val' for secondary exports.",
+        example: "// file: helpers.js\nexport default function sum(a, b) { return a + b; }\nexport const PI = 3.14159;\n\n// file: main.js\n// import sum, { PI } from './helpers.js';"
       }
-],
+    ],
     interviewQAs: [
       {
         question: "Are ES Modules evaluated dynamically or statically?",
@@ -1121,11 +1127,11 @@ import { add } from "./mathUtils.js";`
     ],
     practiceQAs: [
       {
-            question: "Define a parent class 'Vehicle' and a subclass 'Car' that overrides constructor settings and uses super().",
-            answer: "Subclasses extend parent classes using the extends keyword. The subclass constructor must invoke super() before accessing 'this' to run the parent initialization.",
-            example: "class Vehicle {\n  constructor(type) { this.type = type; }\n}\nclass Car extends Vehicle {\n  constructor(brand) {\n    super(\"Car\");\n    this.brand = brand;\n  }\n}\nconst myCar = new Car(\"Toyota\");\nconsole.log(myCar.type, myCar.brand); // \"Car\" \"Toyota\""
+        question: "Define a parent class 'Vehicle' and a subclass 'Car' that overrides constructor settings and uses super().",
+        answer: "Subclasses extend parent classes using the extends keyword. The subclass constructor must invoke super() before accessing 'this' to run the parent initialization.",
+        example: "class Vehicle {\n  constructor(type) { this.type = type; }\n}\nclass Car extends Vehicle {\n  constructor(brand) {\n    super(\"Car\");\n    this.brand = brand;\n  }\n}\nconst myCar = new Car(\"Toyota\");\nconsole.log(myCar.type, myCar.brand); // \"Car\" \"Toyota\""
       }
-],
+    ],
     interviewQAs: [
       {
         question: "What is the difference between a prototype method and a static method in a Class?",
@@ -1178,11 +1184,11 @@ class Dog extends Animal {
     ],
     practiceQAs: [
       {
-            question: "Bind a custom context object to a constructor method so that its properties are correctly mapped inside a new instance.",
-            answer: "By invoking a function with the new keyword, a new blank object is constructed, its prototype is linked, and it binds the 'this' execution context to that instance.",
-            example: "function User(name) {\n  this.name = name;\n}\nconst user = new User(\"Alice\");\nconsole.log(user.name); // \"Alice\""
+        question: "Bind a custom context object to a constructor method so that its properties are correctly mapped inside a new instance.",
+        answer: "By invoking a function with the new keyword, a new blank object is constructed, its prototype is linked, and it binds the 'this' execution context to that instance.",
+        example: "function User(name) {\n  this.name = name;\n}\nconst user = new User(\"Alice\");\nconsole.log(user.name); // \"Alice\""
       }
-],
+    ],
     interviewQAs: [
       {
         question: "How can you achieve encapsulation in vanilla JavaScript objects without ES6 classes?",
@@ -1229,11 +1235,11 @@ console.log(userProfile.address?.city); // undefined (safe)
     ],
     practiceQAs: [
       {
-            question: "Swap two variable values in one line using array destructuring syntax.",
-            answer: "JavaScript allows swapping variable positions without requiring a temporary placeholder variable using array positional destructuring: [a, b] = [b, a].",
-            example: "let a = 1, b = 2;\n[a, b] = [b, a];\nconsole.log(a, b); // 2, 1"
+        question: "Swap two variable values in one line using array destructuring syntax.",
+        answer: "JavaScript allows swapping variable positions without requiring a temporary placeholder variable using array positional destructuring: [a, b] = [b, a].",
+        example: "let a = 1, b = 2;\n[a, b] = [b, a];\nconsole.log(a, b); // 2, 1"
       }
-],
+    ],
     interviewQAs: [
       {
         question: "What is the difference between rest parameters and the spread operator?",
@@ -1275,11 +1281,11 @@ const profile = { name: "John" }; // Object (Heap, reference in Stack)`
     ],
     practiceQAs: [
       {
-            question: "Illustrate how circular references are formed between two objects.",
-            answer: "A circular reference occurs when two or more objects hold references to each other, forming a cyclic dependency loop.",
-            example: "let objA = {};\nlet objB = {};\nobjA.friend = objB;\nobjB.friend = objA;\n// objA and objB link to each other"
+        question: "Illustrate how circular references are formed between two objects.",
+        answer: "A circular reference occurs when two or more objects hold references to each other, forming a cyclic dependency loop.",
+        example: "let objA = {};\nlet objB = {};\nobjA.friend = objB;\nobjB.friend = objA;\n// objA and objB link to each other"
       }
-],
+    ],
     interviewQAs: [
       {
         question: "How does the Mark-and-Sweep garbage collection algorithm work?",
@@ -1335,11 +1341,11 @@ element.classList.add("new-layout");`
     ],
     practiceQAs: [
       {
-            question: "Implement a basic debounce function that postpones executing a target callback until a delay timer runs out.",
-            answer: "A debounce function returns a wrapper closure that clears any active timeout schedule using clearTimeout() and restarts a new timer using setTimeout().",
-            example: "function debounce(func, delay) {\n  let timer;\n  return (...args) => {\n    clearTimeout(timer);\n    timer = setTimeout(() => func(...args), delay);\n  };\n}"
+        question: "Implement a basic debounce function that postpones executing a target callback until a delay timer runs out.",
+        answer: "A debounce function returns a wrapper closure that clears any active timeout schedule using clearTimeout() and restarts a new timer using setTimeout().",
+        example: "function debounce(func, delay) {\n  let timer;\n  return (...args) => {\n    clearTimeout(timer);\n    timer = setTimeout(() => func(...args), delay);\n  };\n}"
       }
-],
+    ],
     interviewQAs: [
       {
         question: "What is the difference between debouncing and throttling?",
@@ -1431,11 +1437,11 @@ x = null; // Swept during next GC cycles`
     ],
     practiceQAs: [
       {
-            question: "Practice: Write a recursive function that calculates the factorial of a number.",
-            answer: "A recursive function calls itself with modified arguments until a base conditional checks true (such as n <= 1), triggering return stacks.",
-            example: "const factorial = n => n <= 1 ? 1 : n * factorial(n - 1);\nconsole.log(factorial(5)); // 120"
+        question: "Practice: Write a recursive function that calculates the factorial of a number.",
+        answer: "A recursive function calls itself with modified arguments until a base conditional checks true (such as n <= 1), triggering return stacks.",
+        example: "const factorial = n => n <= 1 ? 1 : n * factorial(n - 1);\nconsole.log(factorial(5)); // 120"
       }
-],
+    ],
     interviewQAs: [
       {
         question: "Practice Work: Explain how the JavaScript Event Loop resolves macro vs micro tasks.",
@@ -1482,11 +1488,11 @@ const addBonusPure = (user) => ({
     ],
     practiceQAs: [
       {
-            question: "Write a code block demonstrating why avoiding global variables is highly recommended.",
-            answer: "Global variables clutter the lexical namespace and risk being overwritten or modified by separate script modules, leading to hard-to-debug crashes.",
-            example: "// Wrap code in scopes or module blocks to contain variables\n(() => {\n  const privateState = \"Scoped variable\";\n  console.log(privateState); // Accessible\n})();\n// console.log(privateState); // ReferenceError: privateState is not defined"
+        question: "Write a code block demonstrating why avoiding global variables is highly recommended.",
+        answer: "Global variables clutter the lexical namespace and risk being overwritten or modified by separate script modules, leading to hard-to-debug crashes.",
+        example: "// Wrap code in scopes or module blocks to contain variables\n(() => {\n  const privateState = \"Scoped variable\";\n  console.log(privateState); // Accessible\n})();\n// console.log(privateState); // ReferenceError: privateState is not defined"
       }
-],
+    ],
     interviewQAs: [
       {
         question: "What is a pure function and why is it preferred?",

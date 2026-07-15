@@ -13,7 +13,7 @@ export function createSidebar({ topics, onSelectTopic }) {
     Asynchronous: `<svg xmlns="http://www.w3.org/2000/svg" class="h-[1.1rem] w-[1.1rem]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`,
     Advanced: `<svg xmlns="http://www.w3.org/2000/svg" class="h-[1.1rem] w-[1.1rem]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>`,
     Resources: `<svg xmlns="http://www.w3.org/2000/svg" class="h-[1.1rem] w-[1.1rem]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>`,
-    Bookmarks: `<svg xmlns="http://www.w3.org/2000/svg" class="h-[1.1rem] w-[1.1rem] text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" /></svg>`
+    Bookmarks: `<svg xmlns="http://www.w3.org/2000/svg" class="h-[1.1rem] w-[1.1rem] text-red-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" /></svg>`
   };
 
   // Group topics by category
@@ -81,7 +81,7 @@ export function createSidebar({ topics, onSelectTopic }) {
     if (bookmarkedIds.length > 0) {
       html += `
         <div class="space-y-1">
-          <div class="px-3 mb-1.5 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">
+          <div class="px-3 mb-1.5 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-red-500 dark:text-red-400">
             ${icons["Bookmarks"]}
             <span>Bookmarks</span>
           </div>
@@ -93,7 +93,7 @@ export function createSidebar({ topics, onSelectTopic }) {
           html += `
             <a href="#${topic.id}" data-id="${topic.id}" class="group flex items-center justify-between px-3 py-1.5 rounded-lg text-sm transition-all duration-200 ${
               isActive
-                ? "bg-amber-50 dark:bg-amber-950/20 text-amber-900 dark:text-amber-300 font-medium"
+                ? "bg-red-50 dark:bg-red-950/20 text-red-900 dark:text-red-300 font-medium"
                 : "text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900 hover:text-slate-900 dark:hover:text-white"
             }">
               <span class="truncate">${topic.title}</span>
