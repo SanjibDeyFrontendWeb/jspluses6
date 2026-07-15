@@ -36,7 +36,9 @@ pre[class*="language-"] {
   background: transparent !important;
   margin: 0 !important;
   padding: 0 !important;
-  overflow: hidden !important; /* Prevent nested scrollbars */
+  overflow-x: auto !important; /* Allow clean horizontal scrolling directly on the pre tag */
+  -webkit-overflow-scrolling: touch !important;
+  touch-action: pan-x !important;
 }
 code[class*="language-"] {
   font-family: 'Fira Code', monospace !important;

@@ -83,8 +83,8 @@ export function createContentArea({ onToggleBookmark, onNavigate }) {
               </button>
             </div>
             <!-- Code Body -->
-            <div class="p-3 overflow-x-auto">
-              <pre class="language-javascript"><code class="language-javascript">${escapeHtml(section.code.trim())}</code></pre>
+            <div class="p-3">
+              <pre class="language-javascript overflow-x-auto"><code class="language-javascript">${escapeHtml(section.code.trim())}</code></pre>
             </div>
           </div>
         `;
@@ -151,8 +151,8 @@ export function createContentArea({ onToggleBookmark, onNavigate }) {
                       <span>Copy</span>
                     </button>
                   </div>
-                  <div class="p-3 overflow-x-auto">
-                    <pre class="language-javascript"><code class="language-javascript">${escapeHtml(qa.example.trim())}</code></pre>
+                  <div class="p-3">
+                    <pre class="language-javascript overflow-x-auto"><code class="language-javascript">${escapeHtml(qa.example.trim())}</code></pre>
                   </div>
                 </div>
               ` : ""}
@@ -197,8 +197,8 @@ export function createContentArea({ onToggleBookmark, onNavigate }) {
                       <span>Copy</span>
                     </button>
                   </div>
-                  <div class="p-3 overflow-x-auto">
-                    <pre class="language-javascript"><code class="language-javascript">${escapeHtml(qa.example.trim())}</code></pre>
+                  <div class="p-3">
+                    <pre class="language-javascript overflow-x-auto"><code class="language-javascript">${escapeHtml(qa.example.trim())}</code></pre>
                   </div>
                 </div>
               ` : ""}
