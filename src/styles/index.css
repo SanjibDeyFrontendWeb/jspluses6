@@ -35,10 +35,27 @@
 pre[class*="language-"] {
   background: transparent !important;
   margin: 0 !important;
-  padding: 0 !important;
+  padding: 0 0 10px 0 !important; /* Vertical spacing between code text and scrollbar track */
   overflow-x: auto !important; /* Allow clean horizontal scrolling directly on the pre tag */
   -webkit-overflow-scrolling: touch !important;
   touch-action: pan-x !important;
+}
+
+/* Subtle code block scrollbar styling */
+pre[class*="language-"]::-webkit-scrollbar {
+  height: 5px !important;
+}
+pre[class*="language-"]::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+pre[class*="language-"]::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.15) !important; /* Very subtle slate by default */
+  border-radius: 9999px !important;
+  transition: background 0.2s ease;
+}
+.group\/code:hover pre[class*="language-"]::-webkit-scrollbar-thumb,
+.group\/code-qa:hover pre[class*="language-"]::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.45) !important; /* Fade in on container hover */
 }
 code[class*="language-"] {
   font-family: 'Fira Code', monospace !important;
